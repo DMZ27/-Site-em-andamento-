@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="INFORTHEC-DMZ - Soluções digitais profissionais, criação de sites, design gráfico e consultoria tecnológica">
+  <meta name="keywords" content="desenvolvimento web, design gráfico, consultoria digital, Angola, tecnologia">
+  <meta name="author" content="Daniel Monteiro - INFORTHEC-DMZ">
+  
+  <title>INFORTHEC-DMZ - Soluções Digitais Profissionais</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome para ícones -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --azul: #1E3A8A;
+      --azul-claro: #3B82F6;
+      --roxo: #6D28D9;
+      --roxo-claro: #8B5CF6;
+      --verde: #10B981;
+      --verde-claro: #34D399;
+      --cinza: #F3F4F6;
+      --cinza-escuro: #6B7280;
+      --branco: #FFFFFF;
+      --vermelho: #DC2626;
+      --amarelo: #F59E0B;
+      --preto: #111827;
+      
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --border-radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cinza);
+      color: var(--preto);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* === HEADER === */
+    header {
+      background: linear-gradient(135deg, var(--azul) 0%, var(--roxo) 100%);
+      color: var(--branco);
+      padding: 1rem 2rem;
+      box-shadow: var(--shadow-lg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-space {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--verde) 0%, var(--verde-claro) 100%);
+      border-radius: var(--border-radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-space:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .logo-space::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/></svg>') center/70% no-repeat;
+      opacity: 0.8;
+    }
+
+    .logo-placeholder {
+      color: white;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .brand-info h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+      background: linear-gradient(45deg, white, #E5E7EB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .brand-tagline {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      font-weight: 300;
+    }
+
+    /* === NAVEGAÇÃO === */
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--branco);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: var(--transition);
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+    }
+
+    nav a.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .mobile-menu-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--azul) 0%, var(--roxo) 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .mobile-nav.active {
+      display: block;
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* === HERO === */
+    .hero {
+      background: linear-gradient(135deg, var(--azul) 0%, var(--roxo) 50%, var(--verde) 100%);
+      color: var(--branco);
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--verde);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-button:hover {
+      background: var(--verde-claro);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* === SEÇÕES === */
+    section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: none;
+    }
+
+    section.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === CARDS === */
+    .card {
+      background: var(--branco);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--azul-claro);
+    }
+
+    .card h3 {
+      color: var(--azul);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-meta {
+      color: var(--cinza-escuro);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .card-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* === FORMULÁRIOS === */
+    .form-container {
+      background: var(--branco);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--preto);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 2px solid #E5E7EB;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      transition: var(--transition);
+      background: white;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--azul);
+      box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+    }
+
+    .form-control.error {
+      border-color: var(--vermelho);
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+
+    .form-control.success {
+      border-color: var(--verde);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+
+    .error-message {
+      color: var(--vermelho);
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      font-size: 1rem;
+      min-width: 120px;
+    }
+
+    .btn-primary {
+      background: var(--verde);
+      color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--verde-claro);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--azul);
+      color: white;
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--azul-claro);
+    }
+
+    .btn-danger {
+      background: var(--vermelho);
+      color: white;
+    }
+
+    .btn-danger:hover:not(:disabled) {
+      background: #EF4444;
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn.loading {
+      position: relative;
+      color: transparent;
+    }
+
+    .btn.loading::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid transparent;
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* === NOTIFICAÇÕES === */
+    .notification-container {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      z-index: 10000;
+      max-width: 400px;
+    }
+
+    .notification {
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transform: translateX(100%);
+      transition: var(--transition);
+      border-left: 4px solid;
+    }
+
+    .notification.show {
+      transform: translateX(0);
+    }
+
+    .notification.success {
+      background: #ECFDF5;
+      color: #065F46;
+      border-color: var(--verde);
+    }
+
+    .notification.error {
+      background: #FEF2F2;
+      color: #991B1B;
+      border-color: var(--vermelho);
+    }
+
+    .notification.warning {
+      background: #FFFBEB;
+      color: #92400E;
+      border-color: var(--amarelo);
+    }
+
+    .notification.info {
+      background: #EFF6FF;
+      color: #1E40AF;
+      border-color: var(--azul);
+    }
+
+    .notification-close {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: var(--transition);
+    }
+
+    .notification-close:hover {
+      opacity: 1;
+    }
+
+    /* === PAINEL DO USUÁRIO === */
+    .user-panel {
+      background: var(--branco);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      display: none;
+    }
+
+    .user-panel.show {
+      display: block;
+    }
+
+    .user-info {
+      background: linear-gradient(135deg, var(--cinza) 0%, #E5E7EB 100%);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 2rem;
+    }
+
+    .user-avatar {
+      width: 60px;
+      height: 60px;
+      background: var(--azul);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .request-item {
+      background: var(--cinza);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--azul);
+      transition: var(--transition);
+    }
+
+    .request-item:hover {
+      background: #E5E7EB;
+      transform: translateX(4px);
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    .status-pendente {
+      background: #FEF3C7;
+      color: #92400E;
+    }
+
+    .status-processando {
+      background: #DBEAFE;
+      color: #1E40AF;
+    }
+
+    .status-concluido {
+      background: #D1FAE5;
+      color: #065F46;
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: linear-gradient(135deg, var(--preto) 0%, var(--azul) 100%);
+      color: var(--branco);
+      padding: 3rem 2rem 1rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--verde-claro);
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: #D1D5DB;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .footer-section a:hover {
+      color: var(--verde-claro);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--verde);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1rem;
+      text-align: center;
+      color: #9CA3AF;
+    }
+
+    /* === RESPONSIVIDADE === */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero {
+        padding: 3rem 1rem;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      .form-container {
+        padding: 1.5rem;
+      }
+
+      .notification-container {
+        left: 20px;
+        right: 20px;
+        max-width: none;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .social-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 1rem;
+      }
+
+      .logo-space {
+        width: 50px;
+        height: 50px;
+      }
+
+      .brand-info h1 {
+        font-size: 1.2rem;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* === UTILITÁRIOS === */
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .mb-1 { margin-bottom: 0.5rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .mb-3 { margin-bottom: 1.5rem; }
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+    .mt-3 { margin-top: 1.5rem; }
+    .hidden { display: none; }
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay de carregamento -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="btn loading" style="background: var(--verde);"></div>
+  </div>
+
+  <!-- Container de notificações -->
+  <div class="notification-container" id="notificationContainer"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo-container">
+        <!-- Espaço reservado para logotipo -->
+        <div class="logo-space" title="Clique para adicionar seu logotipo">
+          <span class="logo-placeholder">LOGO</span>
+        </div>
+        <div class="brand-info">
+          <h1>INFORTHEC-DMZ</h1>
+          <div class="brand-tagline">Soluções Digitais Profissionais</div>
+        </div>
+      </div>
+
+      <div class="nav-container">
+        <nav id="mainNav">
+          <a href="#" onclick="showSection('blog')" class="active">
+            <i class="fas fa-blog"></i> Blog
+          </a>
+          <a href="#" onclick="showSection('pedido')">
+            <i class="fas fa-shopping-cart"></i> Pedidos
+          </a>
+          <a href="#" onclick="showSection('login')" id="loginNavLink">
+            <i class="fas fa-user"></i> Área do Cliente
+          </a>
+        </nav>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars" id="mobileMenuIcon"></i>
+        </button>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <a href="#" onclick="showSection('blog'); closeMobileMenu()">
+          <i class="fas fa-blog"></i> Blog
+        </a>
+        <a href="#" onclick="showSection('pedido'); closeMobileMenu()">
+          <i class="fas fa-shopping-cart"></i> Pedidos
+        </a>
+        <a href="#" onclick="showSection('login'); closeMobileMenu()" id="mobileLoginLink">
+          <i class="fas fa-user"></i> Área do Cliente
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Bem-vindo ao INFORTHEC-DMZ</h2>
+      <p>Transformamos suas ideias em soluções digitais profissionais. Criação de sites, design gráfico, consultoria tecnológica e muito mais.</p>
+      <a href="#" class="cta-button" onclick="showSection('pedido')">
+        <i class="fas fa-rocket"></i>
+        Começar Projeto
+      </a>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="active">
+    <h2><i class="fas fa-blog"></i> Blog INFORTHEC-DMZ</h2>
+    
+    <div class="card">
+      <h3><i class="fas fa-code"></i> Como criar um site profissional</h3>
+      <div class="card-meta">
+        <span><i class="fas fa-calendar"></i> 24/08/2025</span>
+        <span><i class="fas fa-user"></i> Equipe INFORTHEC-DMZ</span>
+        <span><i class="fas fa-clock"></i> 5 min de leitura</span>
+      </div>
+      <p>Aprenda os passos essenciais para montar um site que impressiona и converte visitantes em clientes. Descubra as melhores práticas de desenvolvimento web.</p>
+      <button class="btn btn-primary" onclick="showBlogPost('post1')">
+        <i class="fas fa-arrow-right"></i> Leia mais
+      </button>
+    </div>
+    
+    <div id="post1" class="card hidden">
+      <button class="btn btn-secondary mb-3" onclick="hideBlogPost()">
+        <i class="fas fa-arrow-left"></i> Voltar ao Blog
+      </button>
+      <h2>Como criar um site profissional</h2>
+      <div class="card-meta mb-3">
+        <span><i class="fas fa-calendar"></i> 24/08/2025</span>
+        <span><i class="fas fa-user"></i> Equipe INFORTHEC-DMZ</span>
+      </div>
+      
+      <h3><i class="fas fa-lightbulb"></i> 1. Planejamento é fundamental</h3>
+      <p>Antes de começar a desenvolver, defina claramente os objetivos do seu site. Quem é seu público-alvo? Que ação você quer que eles realizem? Um planejamento sólido é a base de qualquer projeto web bem-sucedido.</p>
+      
+      <h3><i class="fas fa-tools"></i> 2. Escolha das tecnologias</h3>
+      <p>Para sites profissionais, recomendamos HTML5, CSS3 e JavaScript moderno. Para projetos maiores, considere frameworks como React ou Vue.js. A escolha da tecnologia deve estar alinhada com os objetivos do projeto.</p>
+      
+      <h3><i class="fas fa-mobile-alt"></i> 3. Design responsivo</h3>
+      <p>Mais de 60% dos acessos vêm de dispositivos móveis. Certifique-se de que seu site funciona perfeitamente em todas as telas, desde smartphones até desktops.</p>
+      
+      <h3><i class="fas fa-tachometer-alt"></i> 4. Performance e SEO</h3>
+      <p>Sites rápidos convertem melhor. Otimize imagens, use CDNs e implemente boas práticas de SEO desde o início. A performance é crucial para a experiência do usuário.</p>
+      
+      <p><strong>Conclusão:</strong> Um site profissional é um investimento no crescimento do seu negócio. Invista tempo no planejamento e na execução para obter os melhores resultados.</p>
+    </div>
+    
+    <div class="card">
+      <h3><i class="fas fa-palette"></i> Design que vende: dicas visuais</h3>
+      <div class="card-meta">
+        <span><i class="fas fa-calendar"></i> 20/08/2025</span>
+        <span><i class="fas fa-user"></i> Design Team</span>
+        <span><i class="fas fa-clock"></i> 4 min de leitura</span>
+      </div>
+      <p>Descubra como cores, fontes e layout influenciam a decisão do cliente na hora da compra. Aprenda a criar designs que convertem.</p>
+      <button class="btn btn-primary" onclick="showBlogPost('post2')">
+        <i class="fas fa-arrow-right"></i> Leia mais
+      </button>
+    </div>
+    
+    <div id="post2" class="card hidden">
+      <button class="btn btn-secondary mb-3" onclick="hideBlogPost()">
+        <i class="fas fa-arrow-left"></i> Voltar ao Blog
+      </button>
+      <h2>Design que vende: dicas visuais</h2>
+      <div class="card-meta mb-3">
+        <span><i class="fas fa-calendar"></i> 20/08/2025</span>
+        <span><i class="fas fa-user"></i> Design Team</span>
+      </div>
+      
+      <h3><i class="fas fa-paint-brush"></i> A psicologia das cores</h3>
+      <p>Azul transmite confiança e é ideal para empresas de tecnologia. Verde sugere crescimento e sustentabilidade. Vermelho cria urgência e é perfeito para calls-to-action.</p>
+      
+      <h3><i class="fas fa-font"></i> Tipografia que comunica</h3>
+      <p>Use no máximo 2 fontes diferentes. Uma para títulos (como Poppins) e outra para texto corrido (como Inter). Mantenha a hierarquia visual clara.</p>
+      
+      <h3><i class="fas fa-expand"></i> Espaçamento e respiração</h3>
+      <p>O espaço em branco não é desperdício - é ferramenta de design. Ele guia o olhar e melhora a legibilidade, criando uma experiência mais agradável.</p>
+      
+      <h3><i class="fas fa-mouse-pointer"></i> Call-to-Action eficazes</h3>
+      <p>Botões devem ser destacados, usar verbos de ação e criar senso de urgência. "Compre agora" funciona melhor que "Clique aqui".</p>
+    </div>
+
+    <div class="card">
+      <h3><i class="fas fa-network-wired"></i> Redes domésticas: guia completo</h3>
+      <div class="card-meta">
+        <span><i class="fas fa-calendar"></i> 18/08/2025</span>
+        <span><i class="fas fa-user"></i> Tech Team</span>
+        <span><i class="fas fa-clock"></i> 6 min de leitura</span>
+      </div>
+      <p>Configure sua rede doméstica de forma profissional. Dicas de segurança, performance e troubleshooting para uma conexão estável.</p>
+      <button class="btn btn-primary" onclick="showBlogPost('post3')">
+        <i class="fas fa-arrow-right"></i> Leia mais
+      </button>
+    </div>
+
+    <div id="post3" class="card hidden">
+      <button class="btn btn-secondary mb-3" onclick="hideBlogPost()">
+        <i class="fas fa-arrow-left"></i> Voltar ao Blog
+      </button>
+      <h2>Redes domésticas: guia completo</h2>
+      <div class="card-meta mb-3">
+        <span><i class="fas fa-calendar"></i> 18/08/2025</span>
+        <span><i class="fas fa-user"></i> Tech Team</span>
+      </div>
+      
+      <h3><i class="fas fa-shield-alt"></i> Segurança em primeiro lugar</h3>
+      <p>Configure senhas fortes, use WPA3, mantenha firmware atualizado e crie uma rede guest para visitantes. A segurança deve ser prioridade desde o planejamento.</p>
+      
+      <h3><i class="fas fa-wifi"></i> Otimização de sinal</h3>
+      <p>Posicione o roteador centralmente, evite obstáculos, use repetidores quando necessário e configure canais menos congestionados.</p>
+      
+      <h3><i class="fas fa-wrench"></i> Troubleshooting comum</h3>
+      <p>Reinicie equipamentos, verifique cabos, teste velocidade e monitore dispositivos conectados. Mantenha um log de problemas para identificar padrões.</p>
+    </div>
+  </section>
+
+  <!-- Pedidos Section -->
+  <section id="pedido">
+    <h2><i class="fas fa-clipboard-list"></i> Solicite um Serviço</h2>
+    
+    <div class="form-container">
+      <form id="serviceForm" novalidate>
+        <div class="form-group">
+          <label for="clientName">
+            <i class="fas fa-user"></i> Nome completo *
+          </label>
+          <input type="text" id="clientName" class="form-control" placeholder="Digite seu nome completo" required>
+          <div class="error-message" id="clientNameError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="clientEmail">
+            <i class="fas fa-envelope"></i> E-mail *
+          </label>
+          <input type="email" id="clientEmail" class="form-control" placeholder="seu@email.com" required>
+          <div class="error-message" id="clientEmailError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="clientPhone">
+            <i class="fas fa-phone"></i> Telefone/WhatsApp
+          </label>
+          <input type="tel" id="clientPhone" class="form-control" placeholder="+244 900 000 000">
+          <div class="error-message" id="clientPhoneError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="serviceType">
+            <i class="fas fa-cogs"></i> Tipo de serviço *
+          </label>
+          <select id="serviceType" class="form-control" required>
+            <option value="">Escolha o serviço desejado</option>
+            <option value="website">🌐 Criação de site</option>
+            <option value="design">🎨 Design gráfico</option>
+            <option value="consultoria">💼 Consultoria digital</option>
+            <option value="redes">🔗 Implementação de redes domésticas</option>
+            <option value="sistemas">💻 Sistemas operacionais (Windows 7,8,10,11)</option>
+            <option value="manutencao">🔧 Manutenção e suporte</option>
+          </select>
+          <div class="error-message" id="serviceTypeError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="serviceDescription">
+            <i class="fas fa-edit"></i> Descrição detalhada do projeto *
+          </label>
+          <textarea id="serviceDescription" class="form-control" placeholder="Descreva detalhadamente seu pedido, objetivos, prazo desejado e qualquer informação relevante..." rows="5" required></textarea>
+          <div class="error-message" id="serviceDescriptionError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="estimatedBudget">
+            <i class="fas fa-dollar-sign"></i> Orçamento estimado (Kz ou R$)
+          </label>
+          <input type="number" id="estimatedBudget" class="form-control" placeholder="Ex: 50000" min="0">
+          <small style="color: var(--cinza-escuro);">Campo opcional. Nos ajuda a preparar uma proposta adequada.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="urgency">
+            <i class="fas fa-clock"></i> Urgência do projeto
+          </label>
+          <select id="urgency" class="form-control">
+            <option value="baixa">🟢 Baixa - Sem pressa</option>
+            <option value="media" selected>🟡 Média - 2-4 semanas</option>
+            <option value="alta">🟠 Alta - 1-2 semanas</option>
+            <option value="urgente">🔴 Urgente - Menos de 1 semana</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submitBtn">
+          <i class="fas fa-paper-plane"></i>
+          Enviar Pedido
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Login/Cliente Section -->
+  <section id="login">
+    <h2><i class="fas fa-user-shield"></i> Área do Cliente</h2>
+    
+    <div class="form-container" id="loginForm">
+      <h3>Acesse sua conta</h3>
+      <form id="loginFormElement" novalidate>
+        <div class="form-group">
+          <label for="username">
+            <i class="fas fa-user"></i> Usuário
+          </label>
+          <input type="text" id="username" class="form-control" placeholder="Digite seu usuário" required>
+          <div class="error-message" id="usernameError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">
+            <i class="fas fa-lock"></i> Senha
+          </label>
+          <input type="password" id="password" class="form-control" placeholder="Digite sua senha" required>
+          <div class="error-message" id="passwordError"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="loginBtn">
+          <i class="fas fa-sign-in-alt"></i>
+          Entrar
+        </button>
+      </form>
+      
+      <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #F0F9FF, #E0F2FE); border-radius: var(--border-radius); border-left: 4px solid var(--azul);">
+        <h4><i class="fas fa-info-circle"></i> Contas de demonstração</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+          <div>
+            <strong>👨‍💼 Administrador:</strong><br>
+            <code style="background: rgba(0,0,0,0.1); padding: 0.25rem; border-radius: 4px;">admin</code> / 
+            <code style="background: rgba(0,0,0,0.1); padding: 0.25rem; border-radius: 4px;">admin123</code>
+          </div>
+          <div>
+            <strong>👤 Cliente:</strong><br>
+            <code style="background: rgba(0,0,0,0.1); padding: 0.25rem; border-radius: 4px;">cliente</code> / 
+            <code style="background: rgba(0,0,0,0.1); padding: 0.25rem; border-radius: 4px;">cliente123</code>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Painel do Usuário -->
+    <div class="user-panel" id="userPanel">
+      <div class="user-info" id="userInfo">
+        <div class="user-avatar" id="userAvatar"></div>
+        <div id="userDetails"></div>
+      </div>
+      
+      <h3><i class="fas fa-list-alt"></i> Meus Pedidos</h3>
+      <div id="userRequests"></div>
+      
+      <!-- Painel Admin -->
+      <div class="card hidden" id="adminSection">
+        <h3><i class="fas fa-cogs"></i> Painel Administrativo</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+          <div class="card" style="text-align: center; margin: 0;">
+            <h4 style="color: var(--azul);"><i class="fas fa-clipboard-list"></i> Total de Pedidos</h4>
+            <span style="font-size: 2rem; font-weight: bold; color: var(--verde);" id="totalRequests">0</span>
+          </div>
+          <div class="card" style="text-align: center; margin: 0;">
+            <h4 style="color: var(--azul);"><i class="fas fa-clock"></i> Pendentes</h4>
+            <span style="font-size: 2rem; font-weight: bold; color: var(--amarelo);" id="pendingRequests">0</span>
+          </div>
+          <div class="card" style="text-align: center; margin: 0;">
+            <h4 style="color: var(--azul);"><i class="fas fa-check-circle"></i> Concluídos</h4>
+            <span style="font-size: 2rem; font-weight: bold; color: var(--verde);" id="completedRequests">0</span>
+          </div>
+        </div>
+        
+        <h4>Todos os pedidos recebidos:</h4>
+        <div id="allRequests"></div>
+      </div>
+      
+      <button class="btn btn-danger mt-3" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        Sair da conta
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <!-- Contato -->
+      <div class="footer-section">
+        <h4><i class="fas fa-phone"></i> Contato</h4>
+        <p><i class="fas fa-envelope"></i> menezesdaniel451@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Angola, Luanda</p>
+        <p><i class="fas fa-clock"></i> Seg-Sex: 8h-18h</p>
+        <div class="social-links">
+          <a href="#" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="#" title="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Serviços -->
+      <div class="footer-section">
+        <h4><i class="fas fa-cogs"></i> Nossos Serviços</h4>
+        <a href="#" onclick="showSection('pedido')">Criação de Sites</a>
+        <a href="#" onclick="showSection('pedido')">Design Gráfico</a>
+        <a href="#" onclick="showSection('pedido')">Consultoria Digital</a>
+        <a href="#" onclick="showSection('pedido')">Redes Domésticas</a>
+        <a href="#" onclick="showSection('pedido')">Suporte Técnico</a>
+      </div>
+
+      <!-- Empresa -->
+      <div class="footer-section">
+        <h4><i class="fas fa-building"></i> INFORTHEC-DMZ</h4>
+        <p>Especialistas em soluções digitais inovadoras para empresas e particulares.</p>
+        <p><strong>Desenvolvedor Principal:</strong><br>Daniel Monteiro</p>
+        <p><strong>Colaboradora:</strong><br>Isabel Cassapa</p>
+      </div>
+
+      <!-- Links Úteis -->
+      <div class="footer-section">
+        <h4><i class="fas fa-link"></i> Links Úteis</h4>
+        <a href="#" onclick="showSection('blog')">Blog</a>
+        <a href="#" onclick="showSection('pedido')">Solicitar Orçamento</a>
+        <a href="#" onclick="showSection('login')">Área do Cliente</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 INFORTHEC-DMZ. Todos os direitos reservados.</p>
+      <p>Tecnologia que conecta ideias e transforma negócios.</p>
+      <p><small>Site em desenvolvimento contínuo - Versão 2.0</small></p>
+    </div>
+  </footer>
+
+  <script>
+    // === SISTEMA DE DADOS ===
+    let appData = {
+      users: {
+        'admin': { 
+          password: 'admin123', 
+          role: 'admin', 
+          name: 'Administrador',
+          email: 'admin@inforthec-dmz.com',
+          avatar: 'A'
+        },
+        'cliente': { 
+          password: 'cliente123', 
+          role: 'client', 
+          name: 'Cliente Demo',
+          email: 'cliente@demo.com',
+          avatar: 'C'
+        }
+      },
+      requests: [],
+      currentUser: null,
+      settings: {
+        notifications: true,
+        emailNotifications: true
+      }
+    };
+
+    // === SISTEMA DE NOTIFICAÇÕES ===
+    class NotificationSystem {
+      constructor() {
+        this.container = document.getElementById('notificationContainer');
+        this.notifications = [];
+      }
+
+      show(message, type = 'info', duration = 5000) {
+        const notification = document.createElement('div');
+        const id = Date.now();
+        
+        const icons = {
+          success: 'fas fa-check-circle',
+          error: 'fas fa-exclamation-circle',
+          warning: 'fas fa-exclamation-triangle',
+          info: 'fas fa-info-circle'
+        };
+
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+          <i class="${icons[type]}"></i>
+          <span>${message}</span>
+          <button class="notification-close" onclick="notifications.hide(${id})">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+
+        notification.setAttribute('data-id', id);
+        this.container.appendChild(notification);
+
+        // Animação de entrada
+        setTimeout(() => {
+          notification.classList.add('show');
+        }, 100);
+
+        // Auto-hide
+        if (duration > 0) {
+          setTimeout(() => {
+            this.hide(id);
+          }, duration);
+        }
+
+        return id;
+      }
+
+      hide(id) {
+        const notification = document.querySelector(`[data-id="${id}"]`);
+        if (notification) {
+          notification.classList.remove('show');
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.parentNode.removeChild(notification);
+            }
+          }, 300);
+        }
+      }
+
+      success(message) { return this.show(message, 'success'); }
+      error(message) { return this.show(message, 'error'); }
+      warning(message) { return this.show(message, 'warning'); }
+      info(message) { return this.show(message, 'info'); }
+    }
+
+    const notifications = new NotificationSystem();
+
+    // === SISTEMA DE VALIDAÇÃO ===
+    class FormValidator {
+      constructor() {
+        this.rules = {
+          required: (value) => value.trim() !== '',
+          email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+          minLength: (value, min) => value.length >= min,
+          phone: (value) => !value || /^[\+]?[\d\s\-\(\)]{8,}$/.test(value)
+        };
+      }
+
+      validate(fieldId, rules) {
+        const field = document.getElementById(fieldId);
+        const errorElement = document.getElementById(fieldId + 'Error');
+        const value = field.value.trim();
+        
+        field.classList.remove('error', 'success');
+        errorElement.classList.remove('show');
+
+        for (let rule of rules) {
+          const [ruleName, ...params] = rule.split(':');
+          
+          if (!this.rules[ruleName](value, ...params)) {
+            field.classList.add('error');
+            errorElement.textContent = this.getErrorMessage(ruleName, params);
+            errorElement.classList.add('show');
+            return false;
+          }
+        }
+
+        field.classList.add('success');
+        return true;
+      }
+
+      getErrorMessage(rule, params) {
+        const messages = {
+          required: 'Este campo é obrigatório',
+          email: 'Digite um e-mail válido',
+          minLength: `Mínimo de ${params[0]} caracteres`,
+          phone: 'Digite um telefone válido'
+        };
+        return messages[rule] || 'Campo inválido';
+      }
+
+      validateForm(formId, validationRules) {
+        let isValid = true;
+        
+        for (let [fieldId, rules] of Object.entries(validationRules)) {
+          if (!this.validate(fieldId, rules)) {
+            isValid = false;
+          }
+        }
+        
+        return isValid;
+      }
+    }
+
+    const validator = new FormValidator();
+
+    // === CONTROLE DE NAVEGAÇÃO ===
+    function showSection(sectionId) {
+      // Remove active de todas as seções
+      document.querySelectorAll('section:not(.hero)').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Remove active dos links de navegação
+      document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Ativa a seção solicitada
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        
+        // Ativa o link correspondente
+        const activeLink = document.querySelector(`nav a[onclick*="${sectionId}"]`);
+        if (activeLink) {
+          activeLink.classList.add('active');
+        }
+      }
+      
+      // Atualiza painel do usuário se necessário
+      if (sectionId === 'login' && appData.currentUser) {
+        updateUserPanel();
+      }
+
+      // Fecha menu mobile se estiver aberto
+      closeMobileMenu();
+    }
+
+    // === MENU MOBILE ===
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      const icon = document.getElementById('mobileMenuIcon');
+      
+      mobileNav.classList.toggle('active');
+      icon.className = mobileNav.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+    }
+
+    function closeMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      const icon = document.getElementById('mobileMenuIcon');
+      
+      mobileNav.classList.remove('active');
+      icon.className = 'fas fa-bars';
+    }
+
+    // === SISTEMA DE BLOG ===
+    function showBlogPost(postId) {
+      // Esconde todos os cards principais
+      document.querySelectorAll('#blog .card:not([id])').forEach(card => {
+        card.style.display = 'none';
+      });
+      
+      // Mostra o post específico
+      const post = document.getElementById(postId);
+      if (post) {
+        post.classList.remove('hidden');
+        post.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function hideBlogPost() {
+      // Esconde todos os posts
+      document.querySelectorAll('#blog .card[id^="post"]').forEach(post => {
+        post.classList.add('hidden');
+      });
+      
+      // Mostra os cards principais
+      document.querySelectorAll('#blog .card:not([id])').forEach(card => {
+        card.style.display = 'block';
+      });
+    }
+
+    // === SISTEMA DE PEDIDOS ===
+    document.getElementById('serviceForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      
+      // Validação do formulário
+      const validationRules = {
+        clientName: ['required', 'minLength:2'],
+        clientEmail: ['required', 'email'],
+        clientPhone: ['phone'],
+        serviceType: ['required'],
+        serviceDescription: ['required', 'minLength:10']
+      };
+
+      if (!validator.validateForm('serviceForm', validationRules)) {
+        notifications.error('Por favor, corrija os erros no formulário antes de enviar.');
+        return;
+      }
+
+      // Loading state
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+
+      // Simula envio
+      setTimeout(() => {
+        const formData = {
+          id: Date.now(),
+          name: document.getElementById('clientName').value.trim(),
+          email: document.getElementById('clientEmail').value.trim(),
+          phone: document.getElementById('clientPhone').value.trim(),
+          service: document.getElementById('serviceType').value,
+          description: document.getElementById('serviceDescription').value.trim(),
+          budget: document.getElementById('estimatedBudget').value || 'A definir',
+          urgency: document.getElementById('urgency').value,
+          status: 'pendente',
+          date: new Date().toLocaleDateString('pt-BR'),
+          time: new Date().toLocaleTimeString('pt-BR'),
+          user: appData.currentUser || document.getElementById('clientEmail').value.trim()
+        };
+
+        // Salva o pedido
+        appData.requests.push(formData);
+        saveToStorage();
+
+        // Remove loading
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+
+        // Feedback de sucesso
+        notifications.success('🎉 Pedido enviado com sucesso! Nossa equipe entrará em contato em até 24 horas.');
+        
+        // Limpa o formulário
+        document.getElementById('serviceForm').reset();
+        document.querySelectorAll('.form-control').forEach(field => {
+          field.classList.remove('error', 'success');
+        });
+
+        // Simula mudança de status
+        setTimeout(() => {
+          const request = appData.requests.find(r => r.id === formData.id);
+          if (request) {
+            request.status = 'processando';
+            saveToStorage();
+            if (appData.currentUser) {
+              updateUserPanel();
+            }
+            notifications.info(`📋 Pedido #${formData.id} agora está em processamento.`);
+          }
+        }, 8000);
+
+      }, 2000);
+    });
+
+    // === SISTEMA DE LOGIN ===
+    document.getElementById('loginFormElement').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const loginBtn = document.getElementById('loginBtn');
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      // Validação básica
+      if (!username || !password) {
+        notifications.error('Preencha usuário e senha para continuar.');
+        return;
+      }
+
+      // Loading state
+      loginBtn.classList.add('loading');
+      loginBtn.disabled = true;
+
+      // Simula autenticação
+      setTimeout(() => {
+        if (appData.users[username] && appData.users[username].password === password) {
+          appData.currentUser = username;
+          saveToStorage();
+          
+          const user = appData.users[username];
+          
+          // Atualiza interface
+          document.getElementById('loginForm').style.display = 'none';
+          document.getElementById('userPanel').classList.add('show');
+          document.getElementById('loginNavLink').innerHTML = `<i class="fas fa-user-check"></i> ${user.name}`;
+          document.getElementById('mobileLoginLink').innerHTML = `<i class="fas fa-user-check"></i> ${user.name}`;
+          
+          updateUserPanel();
+          notifications.success(`Bem-vindo, ${user.name}! 👋`);
+          
+        } else {
+          notifications.error('❌ Usuário ou senha incorretos. Verifique suas credenciais.');
+          
+          // Adiciona efeito de shake no formulário
+          const form = document.getElementById('loginFormElement');
+          form.style.animation = 'shake 0.5s';
+          setTimeout(() => form.style.animation = '', 500);
+        }
+
+        loginBtn.classList.remove('loading');
+        loginBtn.disabled = false;
+        
+      }, 1500);
+    });
+
+    // === PAINEL DO USUÁRIO ===
+    function updateUserPanel() {
+      const user = appData.users[appData.currentUser];
+      const userAvatar = document.getElementById('userAvatar');
+      const userDetails = document.getElementById('userDetails');
+      const userRequests = document.getElementById('userRequests');
+      const adminSection = document.getElementById('adminSection');
+      
+      userAvatar.textContent = user.avatar;
+      userAvatar.style.background = user.role === 'admin' ? 
+        'linear-gradient(135deg, var(--roxo), var(--azul))' : 
+        'linear-gradient(135deg, var(--verde), var(--azul))';
+      
+      userDetails.innerHTML = `
+        <h3>👋 Bem-vindo, ${user.name}!</h3>
+        <p><i class="fas fa-user"></i> <strong>Usuário:</strong> ${appData.currentUser}</p>
+        <p><i class="fas fa-shield-alt"></i> <strong>Tipo:</strong> ${user.role === 'admin' ? 'Administrador' : 'Cliente'}</p>
+        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> ${user.email}</p>
+      `;
+      
+      // Mostrar pedidos do usuário
+      const userRequestsData = appData.requests.filter(req => req.user === appData.currentUser);
+      userRequests.innerHTML = userRequestsData.length > 0 ? 
+        userRequestsData.map(req => `
+          <div class="request-item">
+            <h4>${getServiceName(req.service)}</h4>
+            <p><strong>Data:</strong> ${req.date} às ${req.time}</p>
+            <p><strong>Descrição:</strong> ${req.description.substring(0, 100)}${req.description.length > 100 ? '...' : ''}</p>
+            <p><strong>Orçamento:</strong> ${req.budget}</p>
+            <div class="status-indicator status-${req.status}">
+              <i class="fas ${getStatusIcon(req.status)}"></i>
+              ${getStatusText(req.status)}
+            </div>
+          </div>
+        `).join('') : 
+        '<p>Nenhum pedido encontrado. <a href="#" onclick="showSection(\'pedido\')">Solicite um serviço</a></p>';
+      
+      // Se for admin, mostrar painel administrativo
+      if (user.role === 'admin') {
+        adminSection.classList.remove('hidden');
+        
+        // Estatísticas
+        document.getElementById('totalRequests').textContent = appData.requests.length;
+        document.getElementById('pendingRequests').textContent = appData.requests.filter(req => req.status === 'pendente').length;
+        document.getElementById('completedRequests').textContent = appData.requests.filter(req => req.status === 'concluido').length;
+        
+        // Lista de todos os pedidos
+        const allRequests = document.getElementById('allRequests');
+        allRequests.innerHTML = appData.requests.length > 0 ? 
+          appData.requests.map(req => `
+            <div class="request-item">
+              <h4>${getServiceName(req.service)} - ${req.name}</h4>
+              <p><strong>Cliente:</strong> ${req.email}</p>
+              <p><strong>Data:</strong> ${req.date} às ${req.time}</p>
+              <p><strong>Descrição:</strong> ${req.description.substring(0, 100)}${req.description.length > 100 ? '...' : ''}</p>
+              <p><strong>Urgência:</strong> ${getUrgencyText(req.urgency)}</p>
+              <div class="status-indicator status-${req.status}">
+                <i class="fas ${getStatusIcon(req.status)}"></i>
+                ${getStatusText(req.status)}
+              </div>
+              ${req.status !== 'concluido' ? `
+                <div style="margin-top: 1rem;">
+                  <button class="btn btn-secondary btn-sm" onclick="updateRequestStatus(${req.id}, 'processando')">
+                    <i class="fas fa-cog"></i> Processar
+                  </button>
+                  <button class="btn btn-primary btn-sm" onclick="updateRequestStatus(${req.id}, 'concluido')">
+                    <i class="fas fa-check"></i> Concluir
+                  </button>
+                </div>
+              ` : ''}
+            </div>
+          `).join('') : 
+          '<p>Nenhum pedido recebido ainda.</p>';
+      } else {
+        adminSection.classList.add('hidden');
+      }
+    }
+
+    function getServiceName(serviceKey) {
+      const services = {
+        'website': '🌐 Criação de site',
+        'design': '🎨 Design gráfico',
+        'consultoria': '💼 Consultoria digital',
+        'redes': '🔗 Implementação de redes domésticas',
+        'sistemas': '💻 Sistemas operacionais',
+        'manutencao': '🔧 Manutenção e suporte'
+      };
+      return services[serviceKey] || 'Serviço desconhecido';
+    }
+
+    function getStatusIcon(status) {
+      const icons = {
+        'pendente': 'fa-clock',
+        'processando': 'fa-cog',
+        'concluido': 'fa-check-circle'
+      };
+      return icons[status] || 'fa-question-circle';
+    }
+
+    function getStatusText(status) {
+      const texts = {
+        'pendente': 'Pendente',
+        'processando': 'Em processamento',
+        'concluido': 'Concluído'
+      };
+      return texts[status] || 'Status desconhecido';
+    }
+
+    function getUrgencyText(urgency) {
+      const texts = {
+        'baixa': 'Baixa',
+        'media': 'Média',
+        'alta': 'Alta',
+        'urgente': 'Urgente'
+      };
+      return texts[urgency] || 'Não especificada';
+    }
+
+    function updateRequestStatus(requestId, newStatus) {
+      const request = appData.requests.find(req => req.id === requestId);
+      if (request) {
+        request.status = newStatus;
+        saveToStorage();
+        updateUserPanel();
+        notifications.success(`Status do pedido #${requestId} atualizado para "${getStatusText(newStatus)}"`);
+      }
+    }
+
+    function logout() {
+      appData.currentUser = null;
+      saveToStorage();
+      
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('userPanel').classList.remove('show');
+      document.getElementById('loginNavLink').innerHTML = '<i class="fas fa-user"></i> Área do Cliente';
+      document.getElementById('mobileLoginLink').innerHTML = '<i class="fas fa-user"></i> Área do Cliente';
+      
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+      
+      notifications.info('Você saiu da sua conta. Até logo! 👋');
+    }
+
+    // === ARMAZENAMENTO LOCAL ===
+    function saveToStorage() {
+      localStorage.setItem('inforthecDMZData', JSON.stringify(appData));
+    }
+
+    function loadFromStorage() {
+      const savedData = localStorage.getItem('inforthecDMZData');
+      if (savedData) {
+        appData = JSON.parse(savedData);
+        
+        // Se havia um usuário logado, atualizar a interface
+        if (appData.currentUser) {
+          document.getElementById('loginForm').style.display = 'none';
+          document.getElementById('userPanel').classList.add('show');
+          const user = appData.users[appData.currentUser];
+          document.getElementById('loginNavLink').innerHTML = `<i class="fas fa-user-check"></i> ${user.name}`;
+          document.getElementById('mobileLoginLink').innerHTML = `<i class="fas fa-user-check"></i> ${user.name}`;
+          updateUserPanel();
+        }
+      }
+    }
+
+    // === INICIALIZAÇÃO ===
+    document.addEventListener('DOMContentLoaded', function() {
+      loadFromStorage();
+      
+      // Adicionar event listeners para validação em tempo real
+      document.getElementById('clientName').addEventListener('blur', () => {
+        validator.validate('clientName', ['required', 'minLength:2']);
+      });
+      
+      document.getElementById('clientEmail').addEventListener('blur', () => {
+        validator.validate('clientEmail', ['required', 'email']);
+      });
+      
+      document.getElementById('clientPhone').addEventListener('blur', () => {
+        validator.validate('clientPhone', ['phone']);
+      });
+      
+      document.getElementById('serviceDescription').addEventListener('blur', () => {
+        validator.validate('serviceDescription', ['required', 'minLength:10']);
+      });
+    });
+  </script>
+</body>
+</html>
